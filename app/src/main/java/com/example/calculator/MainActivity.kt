@@ -46,23 +46,23 @@ class MainActivity : AppCompatActivity() {
         val button0 = findViewById<Button>(R.id.btn_0)
         button0.setOnClickListener { textView.text = "${textView.text}0"}
 
-        val btn_plus = findViewById<Button>(R.id.btn_plus)
-        btn_plus.setOnClickListener { textView.text = "${textView.text}+"}
+        val plus = findViewById<Button>(R.id.btn_plus)
+        plus.setOnClickListener { textView.text = "${textView.text}+"}
 
-        val btn_minus = findViewById<Button>(R.id.btn_minus)
-        btn_minus.setOnClickListener { textView.text = "${textView.text}-"}
+        val minus = findViewById<Button>(R.id.btn_minus)
+        minus.setOnClickListener { textView.text = "${textView.text}-"}
 
-        val btn_multiply = findViewById<Button>(R.id.btn_multiply)
-        btn_multiply.setOnClickListener { textView.text = "${textView.text}X"}
+        val multiply = findViewById<Button>(R.id.btn_multiply)
+        multiply.setOnClickListener { textView.text = "${textView.text}X"}
 
-        val btn_divide = findViewById<Button>(R.id.btn_divide)
-        btn_divide.setOnClickListener { textView.text = "${textView.text}/"}
+        val divide = findViewById<Button>(R.id.btn_divide)
+        divide.setOnClickListener { textView.text = "${textView.text}/"}
 
-        val open_bracket = findViewById<Button>(R.id.open_bracket)
-        open_bracket.setOnClickListener { textView.text = "${textView.text}("}
+        val openBracket = findViewById<Button>(R.id.open_bracket)
+        openBracket.setOnClickListener { textView.text = "${textView.text}("}
 
-        val  closed_bracket = findViewById<Button>(R.id.closed_bracket)
-        closed_bracket.setOnClickListener { textView.text = "${textView.text})"}
+        val  closedBracket = findViewById<Button>(R.id.closed_bracket)
+        closedBracket.setOnClickListener { textView.text = "${textView.text})"}
 
         val dot = findViewById<Button>(R.id.dot)
         dot.setOnClickListener { textView.text = "${textView.text}."}
@@ -78,10 +78,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         val space = findViewById<Button>(R.id.space)
-        space.setOnClickListener { textView.text ="${textView.text} "}
+        space.setOnClickListener { textView.text ="${textView.text}"+" "}
 
         val sqrt = findViewById<Button>(R.id.square_root)
-        sqrt.setOnClickListener {textView.text = "sqrt(${textView.text})"}
+        sqrt.setOnClickListener {textView.text = "sqrt( "+ "${textView.text}"+" )"}
 
         val ans = findViewById<Button>(R.id.btn_ans)
         ans.setOnClickListener {

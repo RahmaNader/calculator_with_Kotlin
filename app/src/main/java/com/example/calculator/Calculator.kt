@@ -4,8 +4,8 @@ import kotlin.system.exitProcess
 
 class Calculator {
 
-    private fun isOperand(c: Char): Boolean{
-        if(c != '+' && c != '-' && c != '*' && c != '/' && c != '(' && c != ')'){
+    private fun isOperand(c: String): Boolean{
+        if(c != "+" && c != "-" && c != "X" && c != "/" && c != "(" && c != ")"){
             return true
         }
         return false
@@ -15,7 +15,7 @@ class Calculator {
         if(operation == "+" || operation == "-"){
             return 1
         }
-        else if(operation == "*" || operation == "/"){
+        else if(operation == "X" || operation == "/"){
             return 2
         }
         return -1
@@ -36,7 +36,7 @@ class Calculator {
                 "-" -> {
                     return (operand1 - operand2)
                 }
-                "*" -> {
+                "X" -> {
                     return (operand1 * operand2)
                 }
                 "/" -> {
@@ -58,44 +58,42 @@ class Calculator {
         return kotlin.math.sqrt(input)
     }
     
-    fun performOperation(input : String) : String {
+    fun performOperation(input: String) : String {
+        val args: Array<String> = input.split(" ").toTypedArray()
         var result: Double
         val operands = ArrayDeque<Double>()
         val operations = ArrayDeque<String>()
 
-        for (item in input) {
-
-            if (item == '(') {
-                operations.addFirst(item.toString())
+        for(item in args){
+            if(args[0] == "sqrt("){
+                return sqrt(args[1].toDouble()).toString()
             }
-
-            else if (isOperand(item)) {
-                operands.addFirst((item - '0').toDouble())
-                println("this is a test -----> " + (item).code.toDouble())
+            else if(item == "("){
+                operations.addFirst(item)
             }
-
-            else if (item == ')') {
-                while (!operations.isEmpty() && operations.first() != "(") {
+            else if(isOperand(item)){
+                operands.addFirst(item.toDouble())
+            }
+            else if(item == ")"){
+                while(!operations.isEmpty() && operations.first() != "("){
                     operands.addFirst(operate(operands, operations))
                 }
-                if (!operations.isEmpty())
+                if(!operations.isEmpty())
                     operations.removeFirst()
             }
-            else {
-                while (!operations.isEmpty() && precedence(operations.first()) >= precedence(item.toString())) {
+            else{
+                while(!operations.isEmpty() && precedence(operations.first())>= precedence(item)){
                     operands.addFirst(operate(operands, operations))
                 }
-                operations.addFirst(item.toString())
+                operations.addFirst(item)
             }
         }
-        while (!operations.isEmpty()) {
+        while(!operations.isEmpty()){
             operands.addFirst(operate(operands, operations))
         }
+
         result = operands.first()
 
-        if(input.contains("sqrt")){
-            result = sqrt(result)
-        }
         return result.toString()
     }
 }
