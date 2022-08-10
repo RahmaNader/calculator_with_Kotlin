@@ -12,6 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //setting click listeners
+
         val textView = findViewById<TextView>(R.id.output)
         val button1 = findViewById<Button>(R.id.btn_1)
         button1.setOnClickListener { textView.text = "${textView.text}1"}
@@ -49,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         dot.setOnClickListener { textView.text = "${textView.text}."}
         val clear = findViewById<Button>(R.id.btn_clear)
         clear.setOnClickListener { textView.text = ""}
+        val del = findViewById<Button>(R.id.del)
+        del.setOnClickListener {textView.text =  textView.text.subSequence(0,textView.text.length-1)}
+
+
+        //setting click listeners done
         ////////////////////////////////////////////////////////////////////
         val ans = findViewById<Button>(R.id.btn_ans)
         ans.setOnClickListener {
@@ -88,55 +96,5 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-    }
-
-    private fun isOperand(c: Char): Boolean{
-        if(c != '+' && c != '-' && c != '*' && c != '/' && c != '(' && c != ')'){
-            return true
-        }
-        return false
-    }
-
-    private fun precedence(operation: String): Int{
-        if(operation == "+" || operation == "-"){
-            return 1
-        }
-        else if(operation == "*" || operation == "/"){
-            return 2
-        }
-        return -1
-    }
-
-    private fun operate (operands: ArrayDeque<Double>, operations: ArrayDeque<String>): Double{
-        val operand2 = operands.first()
-        operands.removeFirst()
-        val operand1 = operands.first()
-        operands.removeFirst()
-        val operation = operations.first()
-        operations.removeFirst()
-        try{
-            when (operation) {
-                "+" -> {
-                    return (operand1 + operand2)
-                }
-                "-" -> {
-                    return (operand1 - operand2)
-                }
-                "*" -> {
-                    return (operand1 * operand2)
-                }
-                "/" -> {
-                    if(operand2 == 0.0){
-                        throw Exception()
-                    }
-                    return (operand1 / operand2)
-                }
-            }
-        }
-        catch(e: Exception){
-            println("can't divide by zero")
-            exitProcess(1)
-        }
-        return -1.0
     }
 }
