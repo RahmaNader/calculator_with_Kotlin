@@ -287,6 +287,32 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/square_root"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:text="@string/sqrt"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/space"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:text="@string/space"
+                android:textSize="20sp"
+                app:cornerRadius="15dp"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

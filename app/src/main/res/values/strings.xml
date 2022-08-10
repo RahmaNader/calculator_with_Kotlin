@@ -23,4 +23,6 @@
     <string name="dot">.</string>
     <string name="answer">=</string>
     <string name="del"><![CDATA[<-]]></string>
+    <string name="sqrt">sqrt</string>
+    <string name="space">space</string>
 </resources>
